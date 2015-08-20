@@ -7,8 +7,14 @@ require_once CORE_DIR . "input.php";
 require_once CORE_DIR . "pagination.php";
 require_once CORE_DIR . "router.php";
 
+if(!file_exists(ROOT_DIR."config.php")){
+    echo "Config file missing!";
+    die();
+}
+
+require_once ROOT_DIR . "config.php";
+
 $type = inputGet('type', 'str', 'home');
 $view = inputGet('view', 'str', 'home');
-
 
 router($type, $view);
